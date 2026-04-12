@@ -1,14 +1,5 @@
 :root {
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #f7f8f8;
-  --color-background-tertiary: #f3f6f6;
-  --color-text-primary: #1d2727;
-  --color-text-secondary: #556363;
-  --color-text-tertiary: #768383;
-  --color-border-secondary: #d6dfdf;
-  --color-border-tertiary: #e4ebeb;
-  --border-radius-md: 8px;
-  --border-radius-lg: 14px;
+  color-scheme: light;
 }
 
 * {
@@ -17,9 +8,9 @@
 
 body {
   margin: 0;
-  font-family: Georgia, serif;
-  background: var(--color-background-tertiary);
-  color: var(--color-text-primary);
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f4efe6;
+  color: #172033;
 }
 
 #root {

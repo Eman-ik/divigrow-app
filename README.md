@@ -1,28 +1,11 @@
-# DiviGrow
+# DiviGrow Notes
 
-DiviGrow is a full-stack dividend portfolio tracker.
+DiviGrow Notes is a minimal full-stack web app that stores notes in PostgreSQL.
 
 It includes:
-- A React + Vite frontend for managing holdings and viewing portfolio metrics.
+- A React + Vite frontend for adding and deleting notes.
 - A Node.js + Express backend with PostgreSQL persistence.
-- Mock market price and dividend yield utilities for calculations.
-
-## Features
-
-- Login-protected access to holdings and dashboard.
-- Add, edit, and delete holdings.
-- Track total portfolio value.
-- Track annual and monthly dividend income.
-- Set a monthly dividend goal and view progress.
-- View sector allocation breakdown.
-- Run a "What If" calculator for hypothetical purchases.
-
-## Demo Login
-
-Use these credentials on the frontend login screen:
-
-- Username: divi
-- Password: divi123
+- Docker and Docker Compose setup for local and EC2 deployment.
 
 ## Tech Stack
 
@@ -58,12 +41,12 @@ npm install
 ```
 
 3. Create a PostgreSQL database:
-- Example database name: divigrow_db
+- Example database name: divi_db
 
 4. Apply the schema:
 
 ```bash
-psql -U postgres -d divigrow_db -f database/init.sql
+psql -U postgres -d divi_db -f database/init.sql
 ```
 
 5. Configure backend environment variables.
@@ -82,10 +65,7 @@ Backend variables (server/.env):
 - DB_PORT=5432
 - DB_USER=postgres
 - DB_PASSWORD=postgres
-- DB_NAME=divigrow_db
-- DEMO_USERNAME=divi
-- DEMO_PASSWORD=divi123
-- AUTH_TOKEN=divigrow-demo-token
+- DB_NAME=divi_db
 
 Frontend variables (client/.env):
 
@@ -113,6 +93,20 @@ App URL:
 - Frontend: http://localhost:5173
 - API: http://localhost:4000
 
+## Docker Deployment
+
+For the EC2 deployment stack, use `docker-compose.yml` from the repository root.
+
+- Frontend: http://13.62.55.158:3000
+- Backend: http://13.62.55.158:5001
+- Database volume: `postgres_data`
+
+For the Jenkins build pipeline, use `docker-compose.jenkins.yml` and `Jenkinsfile`.
+
+- Frontend build/dev port: 3001
+- Backend build/dev port: 5002
+- Database volume: `postgres_data_jenkins`
+
 ## Available Scripts
 
 Client:
@@ -129,48 +123,16 @@ Server:
 ## API Endpoints
 
 - GET /api/health
-- POST /api/auth/login
-- GET /api/holdings
-- POST /api/holdings
-- PUT /api/holdings/:id
-- DELETE /api/holdings/:id
+- GET /api/notes
+- POST /api/notes
+- PUT /api/notes/:id
+- DELETE /api/notes/:id
 
-Login payload shape:
-
-```json
-{
-	"username": "divi",
-	"password": "divi123"
-}
-```
-
-Successful login response:
+Note payload shape:
 
 ```json
 {
-	"token": "divigrow-demo-token",
-	"username": "divi"
+	"title": "Release checklist",
+	"content": "Optional text"
 }
 ```
-
-Authorization for holdings endpoints:
-
-```http
-Authorization: Bearer <token>
-```
-
-Holding payload shape:
-
-```json
-{
-	"ticker": "AAPL",
-	"shares": 10,
-	"avg_price": 180.5,
-	"sector": "Technology"
-}
-```
-
-## Notes
-
-- Live market data is not currently integrated.
-- Price and yield values are generated from mock utilities in the frontend.

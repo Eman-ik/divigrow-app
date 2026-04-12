@@ -1,21 +1,32 @@
 services:
+  client:
+    image: emanmalik15/divigrow-app:notes-client
+    build:
+      context: ./client
+      args:
+        VITE_API_URL: http://13.62.55.158:5001/api
+    container_name: divi_client
+    ports:
+      - "3000:80"
+    depends_on:
+      - app
+    restart: always
+
   app:
+    image: emanmalik15/divigrow-app:notes-server
     build:
       context: ./server
     container_name: divi_app_server
     ports:
-      - "5001:5000"
+      - "5001:4000"
     environment:
-      PORT: 5000
+      PORT: 4000
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: divi_db
       DB_USER: postgres
       DB_PASSWORD: postgres123
-      CORS_ORIGIN: http://localhost:5173
-      DEMO_USERNAME: divi
-      DEMO_PASSWORD: divi123
-      AUTH_TOKEN: divigrow-demo-token
+      CORS_ORIGIN: http://13.62.55.158:3000
     depends_on:
       - db
     restart: always

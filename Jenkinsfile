@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/eman-15/divigrow-app.git'
+                checkout scm
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Verify Running Containers') {
             steps {
-                sh 'docker ps'
+                sh 'docker compose -f $COMPOSE_FILE ps'
             }
         }
     }
