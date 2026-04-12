@@ -97,8 +97,8 @@ App URL:
 
 For the EC2 deployment stack, use `docker-compose.yml` from the repository root.
 
-- Frontend: http://13.62.55.158:3000
-- Backend: http://13.62.55.158:5001
+- Frontend: http://51.20.137.175:3000
+- Backend: http://51.20.137.175:5001
 - Database volume: `postgres_data`
 
 For the Jenkins build pipeline, use `docker-compose.jenkins.yml` and `Jenkinsfile`.
