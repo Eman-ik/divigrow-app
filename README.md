@@ -1,5 +1,6 @@
 # DiviGrow Notes
 
+
 DiviGrow Notes is a minimal full-stack web app that stores notes in PostgreSQL.
 
 It includes:
