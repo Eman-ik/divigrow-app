@@ -8,7 +8,7 @@ services:
       - client_node_modules:/workspace/client/node_modules
     command: sh -c "npm ci && npm run dev -- --host 0.0.0.0 --port 5173"
     environment:
-      VITE_API_URL: /api
+      VITE_API_URL: http://51.20.137.175:5002/api
     ports:
       - "3001:5173"
     depends_on:
