@@ -16,7 +16,7 @@
 
 ### Step 1: SSH into your EC2 instance
 ```bash
-ssh -i givi-grow.pem ubuntu@51.20.137.175
+ssh -i divi-grow.pem ubuntu@51.20.137.175
 ```
 
 ### Step 2: Clone/update repository

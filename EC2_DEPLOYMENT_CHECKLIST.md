@@ -2,7 +2,7 @@
 
 ## Your Configuration
 - **EC2 IP**: 51.20.137.175
-- **Key**: givi-grow.pem
+- **Key**: divi-grow.pem
 - **Docker Hub**: emanmalik15/divi-grow
 - **GitHub**: github.com/Eman-ik/divigrow-app
 
@@ -49,7 +49,7 @@
 
 **Step 1**: SSH into EC2
 ```bash
-ssh -i givi-grow.pem ubuntu@51.20.137.175
+ssh -i divi-grow.pem ubuntu@51.20.137.175
 ```
 
 **Step 2**: Clone latest code
